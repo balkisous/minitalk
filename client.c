@@ -51,61 +51,36 @@ int			ft_atoi(const char *nptr)
 	return (n * sign);
 }
 
-void	ft_convert_char_to_sig(char	*str,pid_t	pid)
+void	ft_convert_char_to_sig(char	c,pid_t	pid)
 {
-	int	i;
-	int a;
+	int	a;
 
-	i = 0;
 	a = 8;
-	while (str[i])
+	while (a > 0)
 	{
-		while (a > 0)
-		{
-			printf("%d\n", str[i] << (7 - a));
-			if (str[i] == 0)
-				kill(pid, SIGUSR1);
-			//else if (str[i] == 1)
-				kill(pid, SIGUSR2);
-			a--;
-		}
-		i++;
-		//printf("je suis dans le cas 2\n");
-		//printf("le char %c\n", str[i]);
-		//printf("le int dcaller vers la gauche %d\n", str[i] << 2);
-		//on print avant le char pour voir s'il corespond au ascii
-		//Si je sais que c'est un 0
-		//kill(pid, SIGUSR1);
-		
-		//Si je sais que c'est un 1
-		//kill(pid,SIGUSR2);
-		//printf("le n decaller vers la gauche %d\n", n);
-		//on va printer n en deccaller vers la gauche
-		//apres on envoie le signal
-		//traduction des char reussit manque plus qu'a envoyer a server et print
-		//kill(pid, SIGUSR1);
-		//pause(5);
+		if (c >> a & 1) //le bit est de 1
+			kill(pid, SIGUSR1);
+		else if (c >> a & 1)
+			kill(pid, SIGUSR2); //le signal est de 0
+		a--;
 	}
 }
-/*
-void signal_handler(int sig)
-{
-	char s1[] = "SIGUSR1\n";
-	char s2[] = "SIGUSR2\n";
-	if (sig == SIGUSR1)
-		printf("SIGUSR1 recu");
-	else if (sig == SIGUSR2)
-		printf("SIGUSRS2 recu");
-	signal(sig, signal_handler);
-}
-*/
+
 int main(int argc, char **argv)
 {
 	 pid_t	pid;
+	 int	i;
 
+	i = 0;
 	pid = ft_atoi(argv[1]);
 	printf("l'id est %d\n", pid);
-	ft_convert_char_to_sig(argv[2], pid);
+	if (argc == 3)
+	{
+		ft_convert_char_to_sig(argv[2][i++], pid);
+		usleep(500);
+	}
+	else 
+		(printf("error check : ./client [pid server][string]"));
 //	kill(pid, SIGUSR1);
 //	client(pid, argv[2]);
 	return (0);

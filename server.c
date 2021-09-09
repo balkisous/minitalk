@@ -26,13 +26,11 @@ void	translate_message(int sig)
 	{
 		printf("J'ai recu un sigusr1\n");
 		c = sig;
-	//	printf("%c", c >> 2);
 	}
 	if (sig == SIGUSR2)
 	{
 		printf("J'ai recu un sigusr2\n");
 		c = sig;
-	//	printf("%c", c >> 2);
 	}
 	//Quand j ai les 8 bits, je l affichage et je remet a 0;
 }
