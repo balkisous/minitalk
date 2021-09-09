@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 13:53:09 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/09/08 10:59:15 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/09/09 08:31:33 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <signal.h>
 #include <stdio.h>
 
 #endif

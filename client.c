@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:02:08 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/09/08 12:36:26 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/09/09 11:19:15 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int			ft_atoi(const char *nptr)
 	n = 0;
 	k = 0;
 	sign = 1;
-	//le probleme est la wsh
 	i = ft_check(nptr);
 	while (nptr[i] == '-' || nptr[i] == '+')
 	{
@@ -49,33 +48,55 @@ int			ft_atoi(const char *nptr)
 	}
 	if (k > 1)
 		return (0);
-	printf ("le int %d\n", n);
 	return (n * sign);
 }
 
-void	client(pid_t id, char *str)
+void	ft_convert_char_to_sig(char	*str,pid_t	pid)
 {
 	int	i;
-	int a;
+	int n;
 
 	i = 0;
-	a = 0;
-	printf("j'ai recu %d\n", id);
-	printf("la string: %s\n", str);
 	while (str[i])
 	{
-		printf("lettre %c\n", str[i]);
-		a = ft_atoi(&str[i]);
-		printf("le carctere vaut %d\n", a);
-		printf("le carctere vaut %d\n", ft_atoi(&str[i]));
+		printf("le char %c\n", str[i]);
+		printf("le int dcaller vers la gauche %d\n", str[i] << 2);
+		//on print avant le char pour voir s'il corespond au ascii
+		n = str[i] << 2;
+		printf("le n decaller vers la gauche %d\n", n);
+		// on va printer n en deccaller vers la gauche
+		// apres on envoie le signal
+		// traduction des char reussit manque plus qu'a envoyer a server et print
+//		kill(pid, SIGUSR1);
+//		pause(5);
 		i++;
 	}
 }
+/*
+void signal_handler(int sig)
+{
+	char s1[] = "SIGUSR1\n";
+	char s2[] = "SIGUSR2\n";
+	if (sig == SIGUSR1)
+		printf("SIGUSR1 recu");
+	else if (sig == SIGUSR2)
+		printf("SIGUSRS2 recu");
+	signal(sig, signal_handler);
+}
+*/
+void	client_send(pid_t id, char *str)
+{
+	
+}
 int main(int argc, char **argv)
 {
-	int id;
+	 pid_t	pid;
 
-	id = (int)argv[1];
-	client(id, argv[2]);
+	pid = ft_atoi(argv[1]);
+	printf("l'id est %d\n", pid);
+	ft_convert_char_to_sig(argv[2], pid);
+//	kill(pid, SIGUSR1);
+//	pause(5);
+//	client(pid, argv[2]);
 	return (0);
 }
