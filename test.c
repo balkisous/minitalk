@@ -12,15 +12,24 @@
 
 #include <stdio.h>
 
+
 int main (void)
 {
-	int a = 75;
-	int b = a << 2;
-	
-	printf("a = %c\n", a);
-	printf("a decallage %d\n", a << 2); //fichier client
+	int a = 7;
+	char j;
+	char letter;
 
-	printf("b sans decallage = %d\n", b);
-	printf("b = %c\n", b >> 2); //fichier server
+	j = 'K';
+	while (a >= 0)
+	{
+		printf("%d\n", j << (7 - a));
+		a--;
+	}
+//	printf("a = %c\n", a);
+//	printf("a decallage %d\n", a << 2); //fichier client
+//	printf("b sans decallage = %d\n", b);
+//	printf("b = %c\n", b >> 2); //fichier server
+
 	return (0);
 }
+

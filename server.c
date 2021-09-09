@@ -11,31 +11,43 @@
 /* ************************************************************************** */
 
 #include "minitalk.h"
+#include <stdbool.h>
 
 void	translate_message(int sig)
 {
 	int c;
+	char letter;
 
+	letter = 0;
+	//Decaler vers la gauche
+	printf("On a recu un signal\n");
 	c = 0;
 	if (sig == SIGUSR1)
 	{
+		printf("J'ai recu un sigusr1\n");
 		c = sig;
-		printf("%c", c >> 2);
+	//	printf("%c", c >> 2);
 	}
+	if (sig == SIGUSR2)
+	{
+		printf("J'ai recu un sigusr2\n");
+		c = sig;
+	//	printf("%c", c >> 2);
+	}
+	//Quand j ai les 8 bits, je l affichage et je remet a 0;
 }
 
 int	main(void)
 {
 	pid_t	id;
 
-	if (42)
-	{
-		id = getpid();
-		printf("le id c'est %d\n", id);
-		signal(SIGUSR1, translate_message);
-		signal(SIGUSR2, translate_message);
+	id = getpid();
+	printf("le id c'est %d\n", id);
+	signal(SIGUSR1, translate_message);
+	signal(SIGUSR2, translate_message);
+	while (true)
+	{	
 		pause();
-
 	}
 	return (0);
 }

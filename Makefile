@@ -10,34 +10,34 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS_SERVER	= server.c\
-SRCS_CLIENT = client.c\
+CLIENT		= client
+SERVER		= server
+
+SRCS_SERVER	= ./server.c \
+
+SRCS_CLIENT = ./client.c \
+
 OBJ_SERVER	= $(SRCS_SERVER:.c=.o)
 OBJ_CLIENT	= $(SRCS_CLIENT:.c=.o)
-RM			= /bin/rm -rf
+
+RM			= rm -rf
 CC			= gcc
 FLAGS		= -Wall -Wextra -Werror
-S			= server
-C			= client
-#PRINTF		= -L ./my_printf/ -lftprintf
 
-%.o : %.c
-	$(CC) -c $(FLAGS) $<
+.c.o:	${CC} ${CFLAGS} -c $< o ${<:.c=.o}
 
-all : server client
+all : 		${SERVER} ${CLIENT}
 
-server :
+${SERVER}:	$(OBJ_SERVER)
+			$(CC) $(OBJ_SERVER) $(FLAGS)  -o $(SERVER)
 
-		$(CC) $(FLAGS) $(SRCS_SERVER) $(EXEC) $(S)
-
-client : $(OBJ_CLIENT)
-
-		$(CC) $(FLAGS) $(SRCS_CLIENT) $(EXEC) $(C)
+${CLIENT}: 	$(OBJ_CLIENT)
+			$(CC) $(OBJ_CLIENT) $(FLAGS) -o $(CLIENT)
 
 clean:
 		$(RM) $(OBJ_SERVER) $(OBJ_CLIENT)
 
 fclean:	clean
-		$(RM) server client  
+		$(RM) ${SERVER} ${CLIENT}  
 
-re : clean  all
+re : 	fclean  all
