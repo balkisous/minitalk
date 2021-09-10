@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:02:08 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/09/09 11:19:15 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/09/10 07:57:28 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	ft_convert_char_to_sig(char	c,pid_t	pid)
 	a = 8;
 	while (a > 0)
 	{
+		printf("ici\n");
 		if (c >> a & 1) //le bit est de 1
 			kill(pid, SIGUSR1);
 		else if (c >> a & 1)
@@ -72,6 +73,11 @@ int main(int argc, char **argv)
 	 int	i;
 
 	i = 0;
+	if (argc != 3)
+	{
+		(printf("error check : ./client [pid server][string]"));
+		return (0);
+	}
 	pid = ft_atoi(argv[1]);
 	printf("l'id est %d\n", pid);
 	if (argc == 3)
@@ -79,9 +85,5 @@ int main(int argc, char **argv)
 		ft_convert_char_to_sig(argv[2][i++], pid);
 		usleep(500);
 	}
-	else 
-		(printf("error check : ./client [pid server][string]"));
-//	kill(pid, SIGUSR1);
-//	client(pid, argv[2]);
 	return (0);
 }
