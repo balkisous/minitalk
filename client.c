@@ -58,7 +58,7 @@ void	ft_convert_char_to_sig(char	c,pid_t	pid)
 	a = 8;
 	while (a > 0)
 	{
-		printf("ici\n");
+		//printf("ici\n");
 		if (c >> a & 1) //le bit est de 1
 			kill(pid, SIGUSR1);
 		else if (c >> a & 1)
@@ -79,7 +79,6 @@ int main(int argc, char **argv)
 		return (0);
 	}
 	pid = ft_atoi(argv[1]);
-	printf("l'id est %d\n", pid);
 	if (argc == 3)
 	{
 		ft_convert_char_to_sig(argv[2][i++], pid);

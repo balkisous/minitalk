@@ -15,22 +15,21 @@
 
 void	translate_message(int sig)
 {
-	int c;
-	char letter;
+	static int	n;
+	static int	bit;
 
-	letter = 0;
+	//n = 0;
+	//bit = 0;
 	//Decaler vers la gauche
 	printf("On a recu un signal\n");
-	c = 0;
 	if (sig == SIGUSR1)
+		bit += 1 << (7 - n);
+	n++;
+	if (n == 8)
 	{
-		printf("J'ai recu un sigusr1\n");
-		c = sig;
-	}
-	if (sig == SIGUSR2)
-	{
-		printf("J'ai recu un sigusr2\n");
-		c = sig;
+		printf("%c\n", bit);
+		n = 0;
+		bit = 0;
 	}
 	//Quand j ai les 8 bits, je l affichage et je remet a 0;
 }
