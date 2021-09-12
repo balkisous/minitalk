@@ -13,6 +13,32 @@
 #include "minitalk.h"
 #include <stdbool.h>
 
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_putnbr(int n)
+{
+	char	z;
+
+	if (n < 0)
+	{
+		ft_putchar('-');
+		n = -n;
+	}
+	if (n >= 0 && n <= 9)
+	{
+		z = n + '0';
+		ft_putchar(z);
+	}
+	else
+	{
+		ft_putnbr (n / 10);
+		ft_putnbr (n % 10);
+	}
+}
+
 void	translate_message(int sig)
 {
 	static int	n;
