@@ -13,6 +13,15 @@
 #include "minitalk.h"
 #include <stdbool.h>
 
+void ft_putstr(char *str)
+{
+	int i;
+
+	i = 0;
+	while(str[i])
+		ft_putchar(str[i++]);
+}
+
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
@@ -47,16 +56,20 @@ void	translate_message(int sig)
 	//n = 0;
 	//bit = 0;
 	//Decaler vers la gauche
-	printf("On a recu un signal\n");
+	ft_putstr("On a recu un signal\n");
 	if (sig == SIGUSR1)
-		bit += 1 << (7 - n);
+		bit += 1 << (7 - n);	
 	n++;
 	if (n == 8)
 	{
-		printf("%c\n", bit);
+	//	printf("here\n");
+		putchar(bit);
+		printf("\n");
+	//	printf("%c\n", bit);
 		n = 0;
 		bit = 0;
 	}
+	printf("sortie ici \n");
 	//Quand j ai les 8 bits, je l affichage et je remet a 0;
 }
 
@@ -65,7 +78,9 @@ int	main(void)
 	pid_t	id;
 
 	id = getpid();
-	printf("le id c'est %d\n", id);
+	ft_putstr("le c'est ");
+	ft_putnbr(id);
+	ft_putchar('\n');
 	signal(SIGUSR1, translate_message);
 	signal(SIGUSR2, translate_message);
 	while (true)

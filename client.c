@@ -51,7 +51,7 @@ int			ft_atoi(const char *nptr)
 	return (n * sign);
 }
 
-void	ft_convert_char_to_sig(char	c,pid_t	pid)
+void	ft_convert_char_to_sig(char	c, pid_t	pid)
 {
 	int	a;
 
@@ -60,10 +60,14 @@ void	ft_convert_char_to_sig(char	c,pid_t	pid)
 	{
 		if (c >> a & 1) //le bit est de 1
 			kill(pid, SIGUSR1);
-		else if (c >> a & 1)
+		else
 			kill(pid, SIGUSR2); //le signal est de 0
+		usleep(500);
+	//	printf("back to server\n");
+	//	printf("a vaut %d\n", a);
 		a--;
 	}
+	//printf("get out\n");
 }
 
 int main(int argc, char **argv)
@@ -74,14 +78,14 @@ int main(int argc, char **argv)
 	i = 0;
 	if (argc != 3)
 	{
-		(printf("error check : ./client [pid server][string]"));
+		printf("error check : ./client [pid server][string]\n");
 		return (0);
 	}
 	pid = ft_atoi(argv[1]);
 	if (argc == 3)
 	{
-		while(argv[1][i])
-		ft_convert_char_to_sig(argv[2][i++], pid);
+		while(argv[2][i])
+			ft_convert_char_to_sig(argv[2][i++], pid);
 	//	usleep(500);
 	}
 	return (0);

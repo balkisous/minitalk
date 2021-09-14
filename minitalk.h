@@ -19,4 +19,12 @@
 #include <signal.h>
 #include <stdio.h>
 
+void    ft_putstr(char  *str);
+void    ft_putchar(char c);
+void    ft_putnbr(int n);
+void    translate_message(int sig);
+void    ft_convert_char_to_sig(char c, pid_t    pid);
+int     atoi(const char *nptr);
+int     ft_check(const char *nptr);
+
 #endif
