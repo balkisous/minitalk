@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:02:08 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/09/10 07:57:28 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/09/14 17:11:38 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,8 @@ void	ft_convert_char_to_sig(char	c, pid_t	pid)
 		else
 			kill(pid, SIGUSR2); //le signal est de 0
 		usleep(500);
-	//	printf("back to server\n");
-	//	printf("a vaut %d\n", a);
 		a--;
 	}
-	//printf("get out\n");
 }
 
 int main(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 13:34:49 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/09/10 07:58:00 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/09/14 17:18:05 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,23 +53,22 @@ void	translate_message(int sig)
 	static int	n;
 	static int	bit;
 
-	//n = 0;
-	//bit = 0;
+	n = 0;
+	bit = 0;
 	//Decaler vers la gauche
-	ft_putstr("On a recu un signal\n");
 	if (sig == SIGUSR1)
 		bit += 1 << (7 - n);	
 	n++;
+	printf("n vaut %d\n", n);
 	if (n == 8)
 	{
-	//	printf("here\n");
 		putchar(bit);
 		printf("\n");
-	//	printf("%c\n", bit);
+		printf("la2\n");
+		printf("%c\n", bit);
 		n = 0;
 		bit = 0;
 	}
-	printf("sortie ici \n");
 	//Quand j ai les 8 bits, je l affichage et je remet a 0;
 }
 
