@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 13:53:09 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/09/09 08:31:33 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/09/14 17:34:12 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 #include <unistd.h>
 #include <signal.h>
 #include <stdio.h>
+
+typedef	struct s_octet
+{
+	int n;
+	int bit;
+}			t_octet;
 
 void    ft_putstr(char  *str);
 void    ft_putchar(char c);

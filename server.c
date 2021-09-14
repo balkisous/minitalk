@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 13:34:49 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/09/14 17:18:05 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/09/14 17:40:01 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,24 +50,25 @@ void	ft_putnbr(int n)
 
 void	translate_message(int sig)
 {
-	static int	n;
-	static int	bit;
+	struct s_octet	s;
 
-	n = 0;
-	bit = 0;
+	s.n = 0;
+	s.bit = 0;
 	//Decaler vers la gauche
 	if (sig == SIGUSR1)
-		bit += 1 << (7 - n);	
-	n++;
-	printf("n vaut %d\n", n);
-	if (n == 8)
+		s.bit += 1 << (7 - s.n);	
+//	printf("n vaut %d\n", s.n);
+	s.n++;
+//	printf("n vaut %d\n", s.n);
+	if (s.n == 8)
 	{
-		putchar(bit);
+		printf("la2\n");
+		putchar(s.bit);
 		printf("\n");
 		printf("la2\n");
-		printf("%c\n", bit);
-		n = 0;
-		bit = 0;
+		printf("%c\n", s.bit);
+		s.n = 0;
+		s.bit = 0;
 	}
 	//Quand j ai les 8 bits, je l affichage et je remet a 0;
 }
