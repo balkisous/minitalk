@@ -6,12 +6,11 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 13:34:49 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/09/14 17:40:01 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/09/15 08:26:47 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-#include <stdbool.h>
 
 void ft_putstr(char *str)
 {
@@ -50,42 +49,48 @@ void	ft_putnbr(int n)
 
 void	translate_message(int sig)
 {
+	/*
 	struct s_octet	s;
 
 	s.n = 0;
 	s.bit = 0;
+	*/
+	static	int	n;
+	static	int	bit;
 	//Decaler vers la gauche
 	if (sig == SIGUSR1)
-		s.bit += 1 << (7 - s.n);	
+		bit += 1 << (7 - n);	
 //	printf("n vaut %d\n", s.n);
-	s.n++;
+	n++;
 //	printf("n vaut %d\n", s.n);
-	if (s.n == 8)
+	if (n == 8)
 	{
-		printf("la2\n");
-		putchar(s.bit);
-		printf("\n");
-		printf("la2\n");
-		printf("%c\n", s.bit);
-		s.n = 0;
-		s.bit = 0;
+	//	printf("la2\n");
+		putchar(bit);
+	//	printf("\n");
+	//	printf("la2\n");
+	//	printf("%c\n", bit);
+		n = 0;
+		bit = 0;
 	}
 	//Quand j ai les 8 bits, je l affichage et je remet a 0;
 }
 
-int	main(void)
+int	main(int argc, char	**argv)
 {
 	pid_t	id;
 
-	id = getpid();
-	ft_putstr("le c'est ");
-	ft_putnbr(id);
-	ft_putchar('\n');
-	signal(SIGUSR1, translate_message);
-	signal(SIGUSR2, translate_message);
-	while (true)
-	{	
-		pause();
+	(void)argv;
+	if (argc == 1)
+	{
+		id = getpid();
+		ft_putstr("le c'est ");
+		ft_putnbr(id);
+		ft_putchar('\n');
+		signal(SIGUSR1, translate_message);
+		signal(SIGUSR2, translate_message);
+		while (21)
+			pause();
 	}
 	return (0);
 }
