@@ -6,18 +6,18 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 13:34:49 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/09/15 12:38:30 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/09/15 14:15:30 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void ft_putstr(char *str)
+void	ft_putstr(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 		ft_putchar(str[i++]);
 }
 
@@ -49,10 +49,11 @@ void	ft_putnbr(int n)
 
 void	translate_message(int sig)
 {
-	static	int	n;
-	static	int	bit;
+	static int	n;
+	static int	bit;
+
 	if (sig == SIGUSR1)
-		bit += 1 << (7 - n);	
+		bit += 1 << (7 - n);
 	n++;
 	if (n == 8)
 	{
@@ -62,7 +63,8 @@ void	translate_message(int sig)
 	}
 }
 	// (1 << (7 - n)) -> Decaler les bits vers la gauche
-	//Quand j ai les 8 bits, je l'affiche et je remet a 0 n pour recommencer a l'octet suivant
+	//Quand j ai les 8 bits, je l'affiche
+	//et je remet a 0 n pour recommencer a l'octet suivant
 
 int	main(int argc, char	**argv)
 {

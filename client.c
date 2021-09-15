@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:02:08 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/09/15 12:38:24 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/09/15 14:18:26 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 int	ft_check(const char *nptr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (nptr[i] == '\t' || nptr[i] == '\n' || nptr[i] == '\v'
-	|| nptr[i] == '\f' || nptr[i] == '\r' || nptr[i] == ' ')
+		|| nptr[i] == '\f' || nptr[i] == '\r' || nptr[i] == ' ')
 		i++;
 	return (i);
 }
 
-int			ft_atoi(const char *nptr)
+int	ft_atoi(const char *nptr)
 {
-	int i;
-	int n;
-	int sign;
-	int k;
+	int	i;
+	int	n;
+	int	sign;
+	int	k;
 
 	n = 0;
 	k = 0;
@@ -51,7 +51,7 @@ int			ft_atoi(const char *nptr)
 	return (n * sign);
 }
 
-void	ft_convert_char_to_sig(char	c, int pid)
+void	ft_convert_char_to_sig(char c, int pid)
 {
 	int	a;
 
@@ -69,8 +69,7 @@ void	ft_convert_char_to_sig(char	c, int pid)
 	//if (c >> a & 1) -> ca veut dire que le bit est de 1 
 	//else sinon le bit est de 0
 
-
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	 pid_t	pid;
 	 int	i;
@@ -84,7 +83,7 @@ int main(int argc, char **argv)
 	pid = ft_atoi(argv[1]);
 	if (argc == 3)
 	{
-		while(argv[2][i] != '\0')
+		while (argv[2][i] != '\0')
 			ft_convert_char_to_sig(argv[2][i++], pid);
 		exit(EXIT_SUCCESS);
 	}
