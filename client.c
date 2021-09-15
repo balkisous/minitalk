@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:02:08 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/09/15 08:25:47 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/09/15 12:38:24 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,24 @@ int			ft_atoi(const char *nptr)
 	return (n * sign);
 }
 
-void	ft_convert_char_to_sig(char	c, pid_t	pid)
+void	ft_convert_char_to_sig(char	c, int pid)
 {
 	int	a;
 
-	a = 8;
-	while (a > 0)
+	a = 7;
+	while (a >= 0)
 	{
-		if (c >> a & 1) //le bit est de 1
+		if (c >> a & 1)
 			kill(pid, SIGUSR1);
 		else
-			kill(pid, SIGUSR2); //le signal est de 0
-		usleep(500);
+			kill(pid, SIGUSR2);
+		usleep(100);
 		a--;
 	}
 }
+	//if (c >> a & 1) -> ca veut dire que le bit est de 1 
+	//else sinon le bit est de 0
+
 
 int main(int argc, char **argv)
 {

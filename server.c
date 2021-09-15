@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 13:34:49 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/09/15 08:26:47 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/09/15 12:38:30 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,32 +49,20 @@ void	ft_putnbr(int n)
 
 void	translate_message(int sig)
 {
-	/*
-	struct s_octet	s;
-
-	s.n = 0;
-	s.bit = 0;
-	*/
 	static	int	n;
 	static	int	bit;
-	//Decaler vers la gauche
 	if (sig == SIGUSR1)
 		bit += 1 << (7 - n);	
-//	printf("n vaut %d\n", s.n);
 	n++;
-//	printf("n vaut %d\n", s.n);
 	if (n == 8)
 	{
-	//	printf("la2\n");
-		putchar(bit);
-	//	printf("\n");
-	//	printf("la2\n");
-	//	printf("%c\n", bit);
+		ft_putchar(bit);
 		n = 0;
 		bit = 0;
 	}
-	//Quand j ai les 8 bits, je l affichage et je remet a 0;
 }
+	// (1 << (7 - n)) -> Decaler les bits vers la gauche
+	//Quand j ai les 8 bits, je l'affiche et je remet a 0 n pour recommencer a l'octet suivant
 
 int	main(int argc, char	**argv)
 {
@@ -84,7 +72,7 @@ int	main(int argc, char	**argv)
 	if (argc == 1)
 	{
 		id = getpid();
-		ft_putstr("le c'est ");
+		ft_putstr("le pid est ");
 		ft_putnbr(id);
 		ft_putchar('\n');
 		signal(SIGUSR1, translate_message);
