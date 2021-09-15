@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:02:08 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/09/15 14:18:26 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/09/15 15:05:47 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,17 +75,17 @@ int	main(int argc, char **argv)
 	 int	i;
 
 	i = 0;
-	if (argc != 3)
-	{
-		printf("error check : ./client [pid server][string]\n");
-		exit(EXIT_FAILURE);
-	}
 	pid = ft_atoi(argv[1]);
 	if (argc == 3)
 	{
 		while (argv[2][i] != '\0')
 			ft_convert_char_to_sig(argv[2][i++], pid);
 		exit(EXIT_SUCCESS);
+	}
+	else
+	{
+		printf("error check : ./client [pid server][string]\n");
+		exit(EXIT_FAILURE);
 	}
 	return (0);
 }
