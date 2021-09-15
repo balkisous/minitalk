@@ -6,15 +6,15 @@
 #    By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/07 14:30:06 by bben-yaa          #+#    #+#              #
-#    Updated: 2021/09/15 14:52:47 by bben-yaa         ###   ########.fr        #
+#    Updated: 2021/09/15 15:18:15 by bben-yaa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CLIENT		= client
 SERVER		= server
 
-CLIENT_BONUS = client
-SERVEUR_BONUS = server
+CLIENT_BONUS = client_bonus
+SERVER_BONUS = server_bonus
 
 SRCS_SERVER	= ./server.c \
 
@@ -47,10 +47,10 @@ ${CLIENT}: 	$(OBJ_CLIENT)
 			$(CC) $(OBJ_CLIENT) $(FLAGS) -o $(CLIENT)
 
 ${SERVER_BONUS}:	$(OBJ_SERVER_BONUS)
-					$(CC) $(OBJ_SERVER_BONUS) $(FLAGS)  -o $(SERVER)
+					$(CC) $(OBJ_SERVER_BONUS) $(FLAGS)  -o $(SERVER_BONUS)
 
 ${CLIENT_BONUS}: 	$(OBJ_CLIENT_BONUS)
-					$(CC) $(OBJ_CLIENT_BONUS) $(FLAGS) -o $(CLIENT)
+					$(CC) $(OBJ_CLIENT_BONUS) $(FLAGS) -o $(CLIENT_BONUS)
 
 bonus: 		${SERVER_BONUS} ${CLIENT_BONUS}
 
@@ -58,6 +58,6 @@ clean:
 		$(RM) $(OBJ_SERVER) $(OBJ_CLIENT) ${OBJ_SERVER_BONUS} ${OBJ_CLIENT_BONUS}
 
 fclean:	clean
-		$(RM) ${SERVER} ${CLIENT}
+		$(RM) ${SERVER} ${CLIENT} ${SERVER_BONUS} ${CLIENT_BONUS}
 
 re : 	fclean  all

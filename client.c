@@ -6,7 +6,7 @@
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:02:08 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/09/15 15:05:47 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/09/15 17:12:50 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		printf("error check : ./client [pid server][string]\n");
+		write(1, "error check : ./client [pid server][string]\n", 44);
 		exit(EXIT_FAILURE);
 	}
 	return (0);

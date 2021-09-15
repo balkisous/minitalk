@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bben-yaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:02:08 by bben-yaa          #+#    #+#             */
-/*   Updated: 2021/09/15 14:18:26 by bben-yaa         ###   ########.fr       */
+/*   Updated: 2021/09/15 17:13:28 by bben-yaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	main(int argc, char **argv)
 	i = 0;
 	if (argc != 3)
 	{
-		printf("error check : ./client [pid server][string]\n");
+		write(1, "error check : ./client [pid server][string]\n", 50);
 		exit(EXIT_FAILURE);
 	}
 	pid = ft_atoi(argv[1]);
