@@ -75,9 +75,9 @@ int	main(int argc, char **argv)
 	 int	i;
 
 	i = 0;
-	pid = ft_atoi(argv[1]);
 	if (argc == 3)
 	{
+		pid = ft_atoi(argv[1]);
 		while (argv[2][i] != '\0')
 			ft_convert_char_to_sig(argv[2][i++], pid);
 		exit(EXIT_SUCCESS);
